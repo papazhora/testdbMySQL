@@ -25,11 +25,15 @@ public class Main {
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.print("Connection OK!");
+            System.out.println("Connection is OK!");
+            if (!connection.isClosed()) {
+                connection.close();
+                System.out.println("Connection closed!");
+            }
 
         } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.print("Connection Error");
+            System.out.println("Connection Error!");
         }
+
     }
 }
